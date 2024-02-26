@@ -1,0 +1,22 @@
+{% load custom_filter %}
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Order Detail</title>
+</head>
+<body>
+    
+    <h1>Order Details</h1>
+    <p>ID заказа: {{ order.id }}</p>
+    <p>Адрес заказа: {{ order.address }}</p>
+    <p>Общее количество ресурсов для создания {{ order.product.name}} в количестве {{order.quantity_requirement}}:</p>
+    <ul>
+        {% for resource_name, quantity in total_resources.items %}
+        <li>Ресурс {{ resource_name }}: {{ quantity }} {{ measure|get_item:resource_name }}</li>
+    {% endfor %}
+    </ul>
+</body>
+</html>
